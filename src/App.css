@@ -1,13 +1,3 @@
 h1 {
-    color: red;
-}
-
-h1::after {
-    content: " but in blue";
-    color: blue;
-}
-
-.table {
-    display: table;
-    background-color: orange;
+  color: red;
 }
