@@ -5,3 +5,7 @@ h1 {
 .vector-input {
   width: 50px;
 }
+
+.vector-container {
+  display: flex;
+}
