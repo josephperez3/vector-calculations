@@ -1,9 +1,5 @@
 const Header = () => {
-  return (
-    <div>
-      <h1>Vector Calculations</h1>
-    </div>
-  );
+  return <h1>Vector Calculations</h1>;
 };
 
 export default Header;
