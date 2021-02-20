@@ -1,10 +1,11 @@
 import "./App.css";
 import Header from "./components/Header";
 import Vector from "./components/Vector";
-import DotProduct from "./components/DotProduct";
+import CalculationDisplay from "./components/CalculationDisplay";
 import VectorControl from "./components/VectorControl";
 import { useState, useEffect } from "react";
 import { stringToFrac, addFrac, multFrac, displayFrac } from "./Fractions";
+import { computeHeadingLevel } from "@testing-library/react";
 
 function App() {
   // default input boxes for v1
@@ -75,14 +76,52 @@ function App() {
     for (let i in inputBoxes1) {
       const component1 = stringToFrac(inputBoxes1[i].value);
       const component2 = stringToFrac(inputBoxes2[i].value);
-      const product = multFrac(component1, component2);
-      if (!product) {
+      if (!component1 || !component2) {
         return "Please enter an integer or fraction a/b";
-      } else {
-        sum = addFrac(sum, product);
       }
+      const product = multFrac(component1, component2);
+      sum = addFrac(sum, product);
     }
     return displayFrac(sum);
+  };
+
+  // finds cross product
+  const calculateCrossProduct = () => {
+    if (inputBoxes1.length !== 3) {
+      return "Only in R3";
+    } else {
+      const u1 = stringToFrac(inputBoxes1[0].value);
+      const u2 = stringToFrac(inputBoxes1[1].value);
+      const u3 = stringToFrac(inputBoxes1[2].value);
+      const v1 = stringToFrac(inputBoxes2[0].value);
+      const v2 = stringToFrac(inputBoxes2[1].value);
+      const v3 = stringToFrac(inputBoxes2[2].value);
+      if (!u1 || !u2 || !u3 || !v1 || !v2 || !v3) {
+        return "Please enter an integer or fraction a/b";
+      }
+      // x component
+      const u2v3 = multFrac(u2, v3);
+      const u3v2 = multFrac([-1, 1], multFrac(u3, v2));
+      const x = addFrac(u2v3, u3v2);
+      // y component
+      const u1v3 = multFrac([-1, 1], multFrac(u1, v3));
+      const u3v1 = multFrac(u3, v1);
+      const y = addFrac(u1v3, u3v1);
+      // z component
+      const u1v2 = multFrac(u1, v2);
+      const u2v1 = multFrac([-1, 1], multFrac(u2, v1));
+      const z = addFrac(u1v2, u2v1);
+
+      return (
+        "(" +
+        displayFrac(x) +
+        ", " +
+        displayFrac(y) +
+        ", " +
+        displayFrac(z) +
+        ")"
+      );
+    }
   };
 
   return (
@@ -94,14 +133,22 @@ function App() {
           setInputBoxes={setInputBoxes1}
           onUpdate={updateBox}
         />
-        <VectorControl addBox={addBoxes} deleteBox={deleteBoxes} />
+        <VectorControl
+          addBox={addBoxes}
+          deleteBox={deleteBoxes}
+          dimension={inputBoxes1.length}
+        />
         <Vector
           inputBoxes={inputBoxes2}
           setInputBoxes={setInputBoxes2}
           onUpdate={updateBox}
         />
       </div>
-      <DotProduct product={calculateDotProduct()} />
+      <CalculationDisplay name={"Dot Product"} value={calculateDotProduct()} />
+      <CalculationDisplay
+        name={"Cross Product"}
+        value={calculateCrossProduct()}
+      />
     </>
   );
 }
