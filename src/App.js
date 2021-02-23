@@ -124,10 +124,11 @@ function App() {
   };
 
   return (
-    <>
+    <div className="container">
       <Header />
       <div className="vector-container">
         <Vector
+          name={"a"}
           inputBoxes={inputBoxes1}
           setInputBoxes={setInputBoxes1}
           onUpdate={updateBox}
@@ -138,18 +139,24 @@ function App() {
           dimension={inputBoxes1.length}
         />
         <Vector
+          name={"b"}
           inputBoxes={inputBoxes2}
           setInputBoxes={setInputBoxes2}
           onUpdate={updateBox}
         />
       </div>
-      <CalculationDisplay name={"Dot Product"} value={calculateDotProduct()} />
-      <CalculationDisplay
-        name={"Cross Product"}
-        value={calculateCrossProduct()}
-        displayUnavailable={inputBoxes1.length !== 3}
-      />
-    </>
+      <div className="calculation-container">
+        <CalculationDisplay
+          name={"Dot Product a • b"}
+          value={calculateDotProduct()}
+        />
+        <CalculationDisplay
+          name={"Cross Product a x b"}
+          value={calculateCrossProduct()}
+          displayUnavailable={inputBoxes1.length !== 3}
+        />
+      </div>
+    </div>
   );
 }
 

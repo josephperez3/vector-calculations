@@ -1,8 +1,9 @@
 import InputBox from "./InputBox";
 
-const Vector = ({ inputBoxes, setInputBoxes, onUpdate }) => {
+const Vector = ({ name, inputBoxes, setInputBoxes, onUpdate }) => {
   return (
-    <>
+    <div>
+      <h4>{name}</h4>
       {inputBoxes.map((inputBox) => (
         <InputBox
           key={inputBox.id}
@@ -12,7 +13,7 @@ const Vector = ({ inputBoxes, setInputBoxes, onUpdate }) => {
           onUpdate={onUpdate}
         />
       ))}
-    </>
+    </div>
   );
 };
 

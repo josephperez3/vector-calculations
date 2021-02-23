@@ -1,5 +1,5 @@
 h1 {
-  color: red;
+  color: #363840;
 }
 
 .vector-input {
@@ -7,5 +7,56 @@ h1 {
 }
 
 .vector-container {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  justify-content: center;
+  text-align: center;
+}
+
+.container {
+  background-color: #ffe1d4;
+  width: 500px;
+  margin: 20px;
+  padding: 20px;
+  padding-top: 10px;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+body {
+  justify-content: center;
   display: flex;
+  font-family: sans-serif;
+}
+
+.vector-control-container {
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}
+
+p {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.calculation-container {
+  display: grid;
+  grid-template-rows: repeat(2, 30px);
+  margin-bottom: 20px;
+}
+
+.dimension-display {
+  margin: 0;
+  margin-top: 5px;
+}
+
+h4 {
+  margin: 2px;
 }
