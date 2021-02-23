@@ -1,10 +1,15 @@
-const CalculationDisplay = ({ name, value }) => {
+const CalculationDisplay = ({ name, value, displayUnavailable }) => {
   return (
-    <div>
-      <h3>
-        {name}: {value}
-      </h3>
-    </div>
+    <h3>
+      {name}:{" "}
+      {displayUnavailable ? (
+        <>
+          Only in ℝ<sup>3</sup>
+        </>
+      ) : (
+        value
+      )}
+    </h3>
   );
 };
 

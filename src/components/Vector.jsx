@@ -1,9 +1,8 @@
-import { useState } from "react";
 import InputBox from "./InputBox";
 
 const Vector = ({ inputBoxes, setInputBoxes, onUpdate }) => {
   return (
-    <div>
+    <>
       {inputBoxes.map((inputBox) => (
         <InputBox
           key={inputBox.id}
@@ -13,7 +12,7 @@ const Vector = ({ inputBoxes, setInputBoxes, onUpdate }) => {
           onUpdate={onUpdate}
         />
       ))}
-    </div>
+    </>
   );
 };
 

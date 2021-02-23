@@ -53,7 +53,7 @@ export const displayFrac = (frac) => {
     num *= -1;
     denom *= -1;
   }
-  if (denom == 1) {
+  if (denom === 1) {
     return String(num);
   } else {
     return String(num) + "/" + String(denom);
@@ -72,7 +72,7 @@ export const stringToFrac = (frac) => {
   if (frac === "") {
     return [0, 1];
   }
-  if ((frac.match(/\-/g) || []).length === frac.length) {
+  if ((frac.match(/-/g) || []).length === frac.length) {
     return [0, 1];
   }
   if (isNaN(denom)) {

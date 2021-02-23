@@ -3,9 +3,8 @@ import Header from "./components/Header";
 import Vector from "./components/Vector";
 import CalculationDisplay from "./components/CalculationDisplay";
 import VectorControl from "./components/VectorControl";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { stringToFrac, addFrac, multFrac, displayFrac } from "./Fractions";
-import { computeHeadingLevel } from "@testing-library/react";
 
 function App() {
   // default input boxes for v1
@@ -65,7 +64,7 @@ function App() {
   // updates an input box's value
   const updateBox = (inputBoxes, setInputBoxes, id, input) => {
     setInputBoxes(
-      inputBoxes.map((box) => (box.id == id ? { ...box, value: input } : box))
+      inputBoxes.map((box) => (box.id === id ? { ...box, value: input } : box))
     );
     //{ ...task, reminder: !task.reminder }
   };
@@ -88,7 +87,7 @@ function App() {
   // finds cross product
   const calculateCrossProduct = () => {
     if (inputBoxes1.length !== 3) {
-      return "Only in R3";
+      return false;
     } else {
       const u1 = stringToFrac(inputBoxes1[0].value);
       const u2 = stringToFrac(inputBoxes1[1].value);
@@ -148,6 +147,7 @@ function App() {
       <CalculationDisplay
         name={"Cross Product"}
         value={calculateCrossProduct()}
+        displayUnavailable={inputBoxes1.length !== 3}
       />
     </>
   );

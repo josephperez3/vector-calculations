@@ -1,10 +1,12 @@
 const VectorControl = ({ addBox, deleteBox, dimension }) => {
   return (
-    <div>
+    <>
       <button onClick={deleteBox}>-</button>
       <button onClick={addBox}>+</button>
-      <h3>R{dimension}</h3>
-    </div>
+      <h3>
+        ℝ<sup>{dimension}</sup>
+      </h3>
+    </>
   );
 };
 
